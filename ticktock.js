@@ -11,12 +11,14 @@
   };
 
   get_time = function() {
-    var date, hrs, mins, secs;
-    date = new Date;
-    hrs = format_number(date.getHours());
-    mins = format_number(date.getMinutes());
-    secs = format_number(date.getSeconds());
-    return "" + hrs + ":" + mins + ":" + secs;
+    var time, x, _i, _len, _ref;
+    x = {};
+    _ref = ['Hours', 'Minutes', 'Seconds'];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      time = _ref[_i];
+      x[time] = format_number(new Date()["get" + time]());
+    }
+    return "" + x.Hours + ":" + x.Minutes + ":" + x.Seconds;
   };
 
   Element.prototype.TickTock = function() {
